@@ -1,0 +1,36 @@
+<div class="login" ng-controller="loginController">
+    <div class="login-form">
+        <h3> Login </h3>
+        <form name="loginForm">
+            <div class="form-group">
+                <label for="user-email">Email address</label>
+          <!--In Angular, whenever the value of a 'model' changes, Angular AUTOMATICALLY updates all the places where that model is being used -->
+
+                <input type="email" class="form-control" id="user-email" placeholder="Email" name="email" required="" ng-model="user.email"> <!-- IN angular we store data in models, modls are like variable in angular , jb b value change hoti h bariable ki to jo b model use kr ra hota h us value ko to iski value update ho jati h-->
+                <!--loginForm is a name of our form-->
+                <!--email is name of our input-->
+                <!--error is an object which angular adds to our input if there is any error-->
+
+                <!--  loginForm ke andar, email 'name' ke input ke andar Jo jo errors hai ($error), Unmein se 'required' vala error hai kya? -->
+
+                <div ng-show="loginForm.email.$error.required">Required!</div> <!--$error.required iski value true hui mtlb requirement satisfy ni hori mtlb when input is empty-->
+                <div ng-show="loginForm.email.$error.email">This doesn't look like a valid email</div> <!--.$error.email iski value true hui mtlb error aya does not match wla kyuki jo hme email chie wo hmne dali nai-->
+            </div>
+
+            <div class="form-group">
+                <label for="user-password">Password</label>
+                <input type="password" class="form-control" id="user-password" placeholder="Password" name="password" required="" ng-model="user.password" ng-minlength="6" ng-maxlength="15">
+                <div ng-show="loginForm.password.$error.minlength">
+                Password must be at least 6 characters long
+                </div>
+                <div ng-show="loginForm.password.$error.maxlength">
+                Password must be at most 15 characters long
+                </div>
+                <div ng-show="loginForm.password.$error.required">
+                Please enter your super secret ninja password
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default" ng-disabled="loginForm.$invalid">Login</button>
+       </form>
+     </div>
+</div>

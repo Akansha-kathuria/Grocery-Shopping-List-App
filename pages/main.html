@@ -1,0 +1,59 @@
+<!-- main.js file me jo hmne create kia hai controller that is not fair enough hme boundry b bnani hoti hai uske lie that is why er wrote here (ng-controller="mainController")-->
+<!-- ye hmare html code ko link krta hai controller ke sath jo hmne apni main.js file ma bnaya hai-->
+<div class="main" ng-controller="mainController">
+  
+    <div class="ui container">
+        <div class="hero">
+            <p>Find the best restaurants in town</p>
+        </div>
+
+        <div class="search-bar">
+            <form>
+            <div class="input-wrapper">
+              <input type="text" class="form-control" placeholder="Search..." ng-model=coolQuery>
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
+          </form>
+        </div>
+      <!--  <div>Domino's</div>
+        <div>Pizza Hut</div>
+        <div>Macdonalds</div> -->
+        <div ng-repeat="restaurant in restaurants | filter:coolQuery | orderBy: '-cost'" class="restaurant">
+            <div class="rest-wrapper">
+                <div class="image">
+                    <img src="{{restaurant.image}}" height="100" width="100">
+                </div>
+                <div class="rest-info">
+                    <div class="rest-category">
+                       <small>{{restaurant.category}} </small>
+                    </div>
+                    <div class="rest-name">
+                    <strong>{{restaurant.name}}</strong>
+                    </div>
+                    <div>
+                       <strong> {{restaurant.location}}</strong>
+                    </div>
+                    <div class="rest-address">
+                        {{restaurant.address}}
+                    </div>
+                </div>
+            </div>
+            <div class="rest-extra">
+                <div class="type">
+                    <div><small>Cuisines:</small></div>
+                    <div><small>Cost for Two: </small></div>
+                    <div><small>Hours:</small></div>
+                </div>
+                <div class="value">
+                    <div>{{restaurant.cuisines}}</div>
+                    <div>₹{{restaurant.cost | number}}</div>
+                    <div>{{restaurant.hours}}</div>
+                </div>
+            </div>
+            <div class="rating">
+                <strong>{{restaurant.vote}}</strong>
+            </div>
+        </div>
+
+    </div>
+</div>
